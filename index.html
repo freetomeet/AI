@@ -9,9 +9,24 @@
 <meta property="og:type" content="website">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script>
-setTimeout(function() {
-    window.location.href = "https://dceceac.offrsonline.com/s/c54e8c04c250b?subsource=TRAFEE&track=PPS";
-}, 500);
+    // Ambil parameter dari URL
+    const url = new URL(window.location.href);
+    const click_id = url.searchParams.get("s");   // click id
+    const network  = url.searchParams.get("c");   // network
+    const country  = url.searchParams.get("i");   // country
+
+    // Jika tidak ada parameter, tetap redirect ke offer
+    if (!click_id || !network || !country) {
+        window.location.href =
+            "https://siluman.pro/lead/click/click.php";
+    } else {
+        // Redirect ke server untuk dicatat di database
+        window.location.href =
+            "https://siluman.pro/lead/click/click.php"
+            + "?click_id=" + encodeURIComponent(click_id)
+            + "&network="  + encodeURIComponent(network)
+            + "&country="  + encodeURIComponent(country);
+    }
 </script>
 </head>
 <body>
